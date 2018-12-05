@@ -2,4 +2,17 @@
     <string name="app_name">IMove</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="nav_bus">Bus</string>
+    <string name="nav_walk">Walk</string>
+    <string name="nav_drive">Drive</string>
+    <string name="nav_carpool">Carpool</string>
+    <string name="nav_account">Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_cur_points">0</string>
+    <string name="lbl_points_text">points</string>
+    <string name="name_placeholder">John Doe</string>
+    <string name="points_text">points</string>
 </resources>

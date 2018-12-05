@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Account Fragment" /-->
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:src="@drawable/prof_pic_holder"
+        android:scaleType="centerCrop"
+        app:civ_border_color="@android:color/darker_gray"
+        app:civ_border_width="1dp" />
+
+
+    <TextView
+        android:id="@+id/txt_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profile_image"
+        android:text="@string/name_placeholder"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/txt_cur_points"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txt_username"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:text="999"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/text_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_cur_points"
+        android:layout_centerHorizontal="true"
+        android:text="@string/points_text" />
+
+    <TextView
+        android:id="@+id/text_deals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exclusive Deals"
+        android:layout_below="@id/text_points"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_deals"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/text_deals"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
