@@ -6,9 +6,13 @@
     tools:context=".DriveFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Drive Fragment" />
+        android:text="Drive Fragment" /-->
 
+    <WebView
+        android:id="@+id/map_waze"
+        android:layout_width="match_parent"
+        android:layout_height= "match_parent" />
 </FrameLayout>

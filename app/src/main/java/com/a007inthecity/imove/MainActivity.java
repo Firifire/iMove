@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         mMainNav.setSelectedItemId(R.id.nav_bus);
         setFragment(busFragment);
+
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

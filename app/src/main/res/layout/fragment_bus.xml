@@ -6,9 +6,14 @@
     tools:context=".BusFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Bus Fragment" />
+        android:text="Bus Fragment" /-->
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/bus_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>
