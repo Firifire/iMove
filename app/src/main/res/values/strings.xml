@@ -15,4 +15,10 @@
     <string name="lbl_points_text">points</string>
     <string name="name_placeholder">John Doe</string>
     <string name="points_text">points</string>
+
+    <string-array name="bus_route_number">
+        <item>Route..</item>
+        <item>601</item>
+        <item>602</item>
+    </string-array>
 </resources>
