@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,7 +36,7 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
 
     private View mBusFragmentView;
     private MapView mMapView;
-    private Button mScanButton;
+    private ImageButton mScanButton;
 
     private ArrayList<LatLng> mBusStopsLocation_1 = new ArrayList<>();
     private ArrayList<String> mBusStopsName_1 = new ArrayList<>();
