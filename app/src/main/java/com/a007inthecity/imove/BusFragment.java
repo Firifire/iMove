@@ -5,15 +5,21 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,9 +40,14 @@ import static com.a007inthecity.imove.Constants.MAPVIEW_BUNDLE_KEY;
  */
 public class BusFragment extends Fragment implements OnMapReadyCallback, AdapterView.OnItemSelectedListener{
 
-    private View mBusFragmentView;
-    private MapView mMapView;
-    private ImageButton mScanButton;
+    private View mFragmentBus;
+    private MapView mMapBusRoute;
+    private ImageButton mBtnScanQR;
+    private Button mBtnSchedule;
+    private Spinner mSpinnerBusRoute;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavBusSchedule;
+    private Menu mBusArrivalTime;
 
     private ArrayList<LatLng> mBusStopsLocation_1 = new ArrayList<>();
     private ArrayList<String> mBusStopsName_1 = new ArrayList<>();
@@ -58,11 +69,34 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mBusFragmentView = inflater.inflate(R.layout.fragment_bus, container, false);
-        mMapView = mBusFragmentView.findViewById(R.id.bus_map);
-        mScanButton = mBusFragmentView.findViewById(R.id.button_scan_bus_qr);
+        mFragmentBus = inflater.inflate(R.layout.fragment_bus, container, false);
+        mMapBusRoute = mFragmentBus.findViewById(R.id.bus_map);
+        mBtnScanQR = mFragmentBus.findViewById(R.id.button_scan_bus_qr);
+        mNavBusSchedule = mFragmentBus.findViewById(R.id.list_bus_schedule);
 
-        mScanButton.setOnClickListener(new View.OnClickListener() {
+        mSpinnerBusRoute = mFragmentBus.findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> mRouteAdapter = ArrayAdapter.createFromResource(getContext(),R.array.bus_route_number,R.layout.spinner_items);
+        mSpinnerBusRoute.setAdapter(mRouteAdapter);
+        mRouteAdapter.setDropDownViewResource(R.layout.spinner_items);
+        mSpinnerBusRoute.setAdapter(mRouteAdapter);
+        mSpinnerBusRoute.setOnItemSelectedListener(this);
+
+        mDrawerLayout = mFragmentBus.findViewById(R.id.drawer);
+        mBtnSchedule = mFragmentBus.findViewById(R.id.button_show_schedule);
+
+        mBtnSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mSpinnerBusRoute.getSelectedItem().toString().equals("Route..")){
+                    //Toast.makeText(getContext(),"601 selected",Toast.LENGTH_LONG).show();
+                    initArrivalTime(mSpinnerBusRoute.getSelectedItem().toString());
+                    mDrawerLayout.openDrawer(GravityCompat.END);
+
+                }
+            }
+        });
+
+        mBtnScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Button clicked",Toast.LENGTH_SHORT).show();
@@ -75,17 +109,9 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
 
         initGoogleMap(savedInstanceState);
 
-        Spinner mRouteSpinner = mBusFragmentView.findViewById(R.id.spinner);
-//        ArrayAdapter<CharSequence> mRouteAdapter = new ArrayAdapter<>(getContext(),R.layout.spinner_items, R.array.bus_route_number);
-        ArrayAdapter<CharSequence> mRouteAdapter = ArrayAdapter.createFromResource(getContext(),R.array.bus_route_number,R.layout.spinner_items);
-        mRouteSpinner.setAdapter(mRouteAdapter);
-        mRouteAdapter.setDropDownViewResource(R.layout.spinner_items);
-//        mRouteAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mRouteSpinner.setAdapter(mRouteAdapter);
-        mRouteSpinner.setOnItemSelectedListener(this);
 
 
-        return mBusFragmentView;
+        return mFragmentBus;
     }
 
     private void initGoogleMap(Bundle savedInstanceState){
@@ -97,9 +123,9 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
         }
 
-        mMapView.onCreate(mapViewBundle);
+        mMapBusRoute.onCreate(mapViewBundle);
 
-        mMapView.getMapAsync(this);
+        mMapBusRoute.getMapAsync(this);
     }
 
     @Override
@@ -112,25 +138,25 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
             outState.putBundle(MAPVIEW_BUNDLE_KEY, mapViewBundle);
         }
 
-        mMapView.onSaveInstanceState(mapViewBundle);
+        mMapBusRoute.onSaveInstanceState(mapViewBundle);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
+        mMapBusRoute.onResume();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mMapView.onStart();
+        mMapBusRoute.onStart();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mMapView.onStop();
+        mMapBusRoute.onStop();
     }
 
     @Override
@@ -151,27 +177,27 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
         this.map = map;
 
 //        placeMarkersOnMap(map,mBusStopsLocation_1,mBusStopsName_1);
-
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(5.394313599999999, 100.36705230000007),(float)11.0330));
         map.setMyLocationEnabled(true);
         //map.setTrafficEnabled(true);
     }
 
     @Override
     public void onPause() {
-        mMapView.onPause();
+        mMapBusRoute.onPause();
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        mMapView.onDestroy();
+        mMapBusRoute.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        mMapView.onLowMemory();
+        mMapBusRoute.onLowMemory();
     }
 
     private void initBusRoute_1(){
@@ -256,5 +282,36 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
 
     }
 
+    private void initArrivalTime(String routeNumber){
+        View headerView;
+        TextView headerText;
+        if(mNavBusSchedule.getHeaderCount() == 0){
+            headerView = mNavBusSchedule.inflateHeaderView(R.layout.arrival_time_header);
+        }else{
+            headerView = mNavBusSchedule.getHeaderView(0);
+        }
+        headerText = (TextView) headerView.findViewById(R.id.arrival_time_header);
+//        headerText.clearComposingText();
+        headerText.setText(routeNumber + " Next Arrival Time");
 
+        mBusArrivalTime = mNavBusSchedule.getMenu();
+        mBusArrivalTime.clear();
+
+        if (routeNumber.equals("601")){
+            mBusArrivalTime.add("Penang Sentral\t\t\t\t\t\t: 9 mins");
+            mBusArrivalTime.add("Jln Bagan Luar\t\t\t\t\t\t: 14 mins");
+            mBusArrivalTime.add("Jln Kg Gajah\t\t\t\t\t\t\t: 19 mins");
+            mBusArrivalTime.add("Jln Bagan Ajam\t\t\t\t\t: 27 mins");
+            mBusArrivalTime.add("Jln Teluk Air Tawar\t\t\t: 32 mins");
+            mBusArrivalTime.add("Kepala Batas\t\t\t\t\t\t\t: 37 mins");
+            mBusArrivalTime.add("Kompleks Dato Kailan\t: 40 mins");
+        }else if (routeNumber.equals("602")){
+            mBusArrivalTime.add("Penang Sentral\t\t\t\t\t\t\t\t\t: 9 mins");
+            mBusArrivalTime.add("Jln Bagan Luar\t\t\t\t\t\t\t\t\t: 14 mins");
+            mBusArrivalTime.add("Sg Puyu\t\t\t\t\t\t\t\t\t\t\t\t\t\t: 19 mins");
+            mBusArrivalTime.add("Sg Lokan\t\t\t\t\t\t\t\t\t\t\t\t\t: 27 mins");
+            mBusArrivalTime.add("Kampung Nyior Sebatang\t\t: 32 mins");
+            mBusArrivalTime.add("Pokok Sena\t\t\t\t\t\t\t\t\t\t\t: 37 mins");
+        }
+    }
 }
