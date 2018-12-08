@@ -2,6 +2,7 @@ package com.a007inthecity.imove;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -100,6 +101,9 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Button clicked",Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(getContext(),
+                        ScanBusQRActivity.class);
+                startActivity(myIntent);
             }
         });
 

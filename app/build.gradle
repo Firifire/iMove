@@ -39,4 +39,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+
+    //QR Scanner
+    implementation 'me.dm7.barcodescanner:zxing:1.9'
 }
