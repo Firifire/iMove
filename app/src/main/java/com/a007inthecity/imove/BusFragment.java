@@ -169,13 +169,7 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
                 != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         this.map = map;
@@ -259,6 +253,7 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
             );
         }
 
+//        map.addPolyline(new PolylineOptions().addAll(busStopsLocation));
 
         map.addMarker(new MarkerOptions()
                         .position(new LatLng(5.452891292075856,100.38334522816035))

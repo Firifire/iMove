@@ -4,8 +4,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,7 +32,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDqahGiBKmwX-Xpo9DQsUP8iWLrQFtQEWk" />
 
-        <activity android:name=".ScanBusQRActivity"></activity>
+        <activity android:name=".ScanBusQRActivity" />
+        <activity android:name=".CarpoolActivity"></activity>
     </application>
 
 </manifest>

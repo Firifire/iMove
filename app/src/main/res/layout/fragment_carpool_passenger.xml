@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CarpoolDriverFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/passenger_fragment_title"
+            android:layout_width="200dp"
+            android:textAlignment="center"
+            android:layout_height="30dp"
+            android:text="Scan Driver's QR"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_corner_carpool"/>
+
+        <me.dm7.barcodescanner.zxing.ZXingScannerView
+            android:layout_margin="5dp"
+            android:id="@+id/driver_qr_scanner"
+            android:layout_below="@id/passenger_fragment_title"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/driver_info_panel"
+        android:elevation="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/carpool_passenger_fragment"
+        android:padding="10dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car_plate_back"
+            android:padding="3dp"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="ABC 1234"/>
+
+        <TableLayout
+            android:layout_width="300dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="Driver"
+                    android:textStyle="italic"
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="John Doe"
+                    android:layout_column="2"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="From"
+                    android:textStyle="italic"
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="Sg Nibong Terminal"
+                    android:textStyle="bold"
+                    android:layout_column="2"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="To"
+                    android:textStyle="italic"
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="Intel PG 2"
+                    android:textStyle="bold"
+                    android:layout_column="2"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="Max. passenger"
+                    android:textStyle="italic"
+                    android:layout_column="1"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="4"
+                    android:textStyle="bold"
+                    android:layout_column="2"
+                    android:layout_weight="1"/>
+            </TableRow>
+        </TableLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

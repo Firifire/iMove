@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".CarpoolFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Carpool Fragment" />
 
-</FrameLayout>
+    <Button
+
+        android:id="@+id/button_driver"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="I'm a \n driver"
+        android:drawableRight="@drawable/steering"
+        android:background="@color/carpool_driver"
+        android:paddingRight="0dp"
+        android:layout_margin="0dp" />
+
+    <Button
+        android:id="@+id/button_passenger"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="I'm a \n passenger"
+        android:drawableLeft="@drawable/tyre"
+        android:paddingLeft="0dp"
+        android:background="@color/carpool_passenger"
+        android:layout_margin="0dp"
+        />
+</LinearLayout>

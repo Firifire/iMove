@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="carpool_driver">#80fff2</color>
+    <color name="carpool_driver_fragment">#00ccb8</color>
+    <color name="carpool_passenger">#99ffc5</color>
+    <color name="carpool_passenger_fragment">#66ffa8</color>
 </resources>
