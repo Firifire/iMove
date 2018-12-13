@@ -16,6 +16,9 @@
     <string name="name_placeholder">John Doe</string>
     <string name="points_text">points</string>
 
+    <string name="reward_message_opening">You\'re rewarded </string>
+    <string name="reward_message_end"> points for your last </string>
+
     <string-array name="bus_route_number">
         <item>Route..</item>
         <item>601</item>

@@ -177,7 +177,7 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, Adapter
 //        placeMarkersOnMap(map,mBusStopsLocation_1,mBusStopsName_1);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(5.394313599999999, 100.36705230000007),(float)11.0330));
         map.setMyLocationEnabled(true);
-        //map.setTrafficEnabled(true);
+        map.setTrafficEnabled(true);
     }
 
     @Override

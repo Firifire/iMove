@@ -30,7 +30,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDqahGiBKmwX-Xpo9DQsUP8iWLrQFtQEWk" />
+            android:value="AIzaSyA0SLv8bTvT5m8RtWDSIisU8wREQr0UMxI" />
 
         <activity android:name=".ScanBusQRActivity" />
         <activity android:name=".CarpoolActivity"></activity>

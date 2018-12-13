@@ -16,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     private BusFragment busFragment;
     private WalkFragment walkFragment;
-    private DriveFragment driveFragment;
+//    private DriveFragment driveFragment;
+
+    private DriveGmapFragment driveGmapFragment;
     private CarpoolFragment carpoolFragment;
     private AccountFragment accountFragment;
 
@@ -30,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         busFragment = new BusFragment();
         carpoolFragment = new CarpoolFragment();
-        driveFragment = new DriveFragment();
+//        driveFragment = new DriveFragment();
+        driveGmapFragment = new DriveGmapFragment();
         walkFragment = new WalkFragment();
         accountFragment = new AccountFragment();
 
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(walkFragment);
                         return true;
                     case R.id.nav_drive:
-                        setFragment(driveFragment);
+                        setFragment(driveGmapFragment);
                         return true;
                     case R.id.nav_carpool:
                         setFragment(carpoolFragment);

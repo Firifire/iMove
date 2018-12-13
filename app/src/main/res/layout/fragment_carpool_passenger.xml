@@ -130,6 +130,15 @@
             </TableRow>
         </TableLayout>
 
+        <Button
+            android:id="@+id/button_arrived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I've arrived"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="#ffffff"
+            android:background="@color/colorPrimary"/>
     </RelativeLayout>
 
 
